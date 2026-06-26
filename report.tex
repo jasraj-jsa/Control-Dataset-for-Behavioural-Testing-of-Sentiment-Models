@@ -1,0 +1,179 @@
+\documentclass[11pt]{article}
+
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[margin=1in]{geometry}
+\usepackage{booktabs}
+\usepackage{hyperref}
+\usepackage{xcolor}
+\usepackage{enumitem}
+
+\hypersetup{colorlinks=true, urlcolor=blue, linkcolor=black}
+
+\title{A Control Dataset for Behavioural Testing of Sentiment Models}
+\author{[YOUR NAME] \quad [STUDENT NUMBER] \\ DSAIT4205}
+\date{\today}
+
+\begin{document}
+\maketitle
+
+\section{The property I want to test}
+
+A sentiment classifier can score high on a held-out test set and still fail
+on inputs a person would find trivial. The reason is that accuracy on one
+distribution hides how the model behaves when you change one thing at a time.
+Ribeiro et al.\ (2020) make this case directly: held-out datasets carry the
+same biases as the training data, so real-world performance gets
+overestimated, and a single accuracy number tells you nothing about
+\emph{where} a model breaks.\footnote{Marco Tulio Ribeiro, Tongshuang Wu,
+Carlos Guestrin, Sameer Singh. \emph{Beyond Accuracy: Behavioral Testing of
+NLP Models with CheckList}. ACL 2020.
+\url{https://arxiv.org/abs/2005.04118}}
+
+Their answer, borrowed from software testing, is to test capabilities one by
+one with inputs you control. My dataset does exactly that for three
+behaviours a sentiment model should handle but frequently does not:
+
+\begin{itemize}[noitemsep]
+  \item reading negation rather than keying on a positive word,
+  \item ignoring a swapped name or place that carries no sentiment,
+  \item ignoring neutral filler appended to a clear sentence.
+\end{itemize}
+
+Each behaviour gets its own subset, and each subset changes exactly one
+factor so that any failure points at one cause.
+
+\section{The three subsets}
+
+The dataset follows the three CheckList test types. A Minimum Functionality
+Test (MFT) is a set of simple labelled examples that target one behaviour, in
+the spirit of a unit test. An Invariance test (INV) applies a change that
+should not move the prediction. A Directional Expectation test (DIR) applies
+a change whose effect on the prediction is known in advance. The paper
+defines all three and reports failure rates for commercial and research
+models on a sentiment task, which is what makes sentiment a clean domain to
+copy.
+
+\subsection{Subset 1 -- Negation (MFT)}
+
+I take a neutral noun and a sentiment-laden adjective and negate them with
+three patterns of increasing difficulty:
+\begin{center}
+\texttt{The \{thing\} was not \{adjective\}.} \\
+\texttt{Although they tried, the \{thing\} was not \{adjective\}.} \\
+\texttt{The \{thing\} was anything but \{adjective\}.}
+\end{center}
+When the adjective is positive, the negated sentence is negative; when it is
+negative, the negated sentence reads positive or neutral. The label is
+therefore fixed by construction, which is what lets this subset carry gold
+labels. A model that detects the word ``great'' and ignores the negation
+gets the whole positive-adjective half wrong.
+
+\begin{table}[h]
+\centering
+\begin{tabular}{ll}
+\toprule
+Text & Label \\
+\midrule
+The service was not great. & negative \\
+Although they tried, the meal was not wonderful. & negative \\
+The flight was anything but great. & negative \\
+The product was not poor. & positive \\
+\bottomrule
+\end{tabular}
+\caption{Examples from \texttt{negation.csv} (216 rows).}
+\end{table}
+
+On this subset DistilBERT (SST-2) fails 34.3\% overall, in the paper's range
+of roughly 19\% to 54\%. The aggregate hides where it breaks. Splitting by
+pattern, the plain template fails 2.8\% and the buried one 0\%, but
+\texttt{anything but} fails 100\%: every single row. The model reads the
+positive adjective and ignores the construction completely. One template
+isolates the failure, which is the point of testing capabilities one at a
+time rather than reporting a single accuracy number.
+
+\subsection{Subset 2 -- Names (INV)}
+
+Here I fix a full sentence and change only a person name or a place name.
+None of these names carry sentiment, so the prediction should not move across
+a group. Each group shares an id so the evaluation can check that every
+variant gets the same label.
+
+\begin{table}[h]
+\centering
+\begin{tabular}{ll}
+\toprule
+Group & Text \\
+\midrule
+0 & Sarah said the service was great. \\
+0 & Priya said the service was great. \\
+2 & The trip to Berlin was wonderful. \\
+2 & The trip to Mumbai was wonderful. \\
+\bottomrule
+\end{tabular}
+\caption{Examples from \texttt{names.csv} (24 rows, 4 groups).}
+\end{table}
+
+This is unlabelled on purpose. The test is not whether the prediction is
+correct but whether it stays constant when an irrelevant token changes. In
+the paper, swapping locations changed predictions for up to about 21\% of
+cases, and swapping person names for up to about 15\%.
+
+\subsection{Subset 3 -- Noise (DIR/INV)}
+
+I take a clearly polarised sentence and append a neutral fragment: a handle,
+a URL, or a context-free fact. The added text carries no sentiment, so the
+prediction should not change direction. Each row keeps both the base and the
+perturbed version so the two can be compared directly.
+
+\begin{table}[h]
+\centering
+\begin{tabular}{ll}
+\toprule
+Base & Perturbed \\
+\midrule
+The service was great. & The service was great. @pi9QDK \\
+The flight was terrible. & The flight was terrible. https://t.co/PWK1jb \\
+The meal was wonderful. & The meal was wonderful. It is Tuesday. \\
+\bottomrule
+\end{tabular}
+\caption{Examples from \texttt{noise.csv} (24 rows, 6 groups).}
+\end{table}
+
+The paper runs the same idea by adding random URLs and handles to tweets and
+finds that predictions shift for between 7\% and 25\% of inputs. A model that
+moves its prediction here is reacting to noise.
+
+\section{How the data is generated}
+
+Everything comes from one short script, \texttt{generate.py}. It holds six
+small word lists (positive adjectives, negative adjectives, neutral nouns,
+person names, places, filler fragments). The negation subset is the Cartesian
+product of nouns and adjectives dropped into each of the three templates. The
+names subset
+fills four sentence templates with each name or place in turn. The noise
+subset pairs each base sentence with each filler fragment. The script writes
+three CSV files and prints the row count of each. A second script,
+\texttt{evaluate.py}, runs a pretrained sentiment model
+(\texttt{distilbert-base-uncased-finetuned-sst-2-english}) over the three
+files and prints a failure rate per subset: prediction versus gold for
+negation, prediction agreement within a group for names, and base versus
+perturbed agreement for noise.
+
+The lists are kept small and hand-checked so that every adjective has an
+unambiguous polarity. If the lexicon contained a borderline word, the gold
+label for the negation subset would no longer be safe, so curation matters
+more than size here.
+
+\section{Links}
+
+\begin{itemize}[noitemsep]
+  \item Dataset and code:
+    \url{https://github.com/[USERNAME]/checklist-control-dataset}
+  \item Paper: Ribeiro et al.\ (2020),
+    \url{https://arxiv.org/abs/2005.04118}
+  \item CheckList software:
+    \url{https://github.com/marcotcr/checklist}
+\end{itemize}
+
+\end{document}

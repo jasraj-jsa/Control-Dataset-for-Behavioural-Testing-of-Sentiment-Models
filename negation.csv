@@ -1,0 +1,217 @@
+text,label
+The service was not great.,negative
+The service was not wonderful.,negative
+The service was not excellent.,negative
+The service was not fantastic.,negative
+The service was not lovely.,negative
+The service was not amazing.,negative
+The flight was not great.,negative
+The flight was not wonderful.,negative
+The flight was not excellent.,negative
+The flight was not fantastic.,negative
+The flight was not lovely.,negative
+The flight was not amazing.,negative
+The meal was not great.,negative
+The meal was not wonderful.,negative
+The meal was not excellent.,negative
+The meal was not fantastic.,negative
+The meal was not lovely.,negative
+The meal was not amazing.,negative
+The room was not great.,negative
+The room was not wonderful.,negative
+The room was not excellent.,negative
+The room was not fantastic.,negative
+The room was not lovely.,negative
+The room was not amazing.,negative
+The trip was not great.,negative
+The trip was not wonderful.,negative
+The trip was not excellent.,negative
+The trip was not fantastic.,negative
+The trip was not lovely.,negative
+The trip was not amazing.,negative
+The product was not great.,negative
+The product was not wonderful.,negative
+The product was not excellent.,negative
+The product was not fantastic.,negative
+The product was not lovely.,negative
+The product was not amazing.,negative
+The service was not terrible.,positive
+The service was not awful.,positive
+The service was not horrible.,positive
+The service was not poor.,positive
+The service was not disappointing.,positive
+The service was not lousy.,positive
+The flight was not terrible.,positive
+The flight was not awful.,positive
+The flight was not horrible.,positive
+The flight was not poor.,positive
+The flight was not disappointing.,positive
+The flight was not lousy.,positive
+The meal was not terrible.,positive
+The meal was not awful.,positive
+The meal was not horrible.,positive
+The meal was not poor.,positive
+The meal was not disappointing.,positive
+The meal was not lousy.,positive
+The room was not terrible.,positive
+The room was not awful.,positive
+The room was not horrible.,positive
+The room was not poor.,positive
+The room was not disappointing.,positive
+The room was not lousy.,positive
+The trip was not terrible.,positive
+The trip was not awful.,positive
+The trip was not horrible.,positive
+The trip was not poor.,positive
+The trip was not disappointing.,positive
+The trip was not lousy.,positive
+The product was not terrible.,positive
+The product was not awful.,positive
+The product was not horrible.,positive
+The product was not poor.,positive
+The product was not disappointing.,positive
+The product was not lousy.,positive
+"Although they tried, the service was not great.",negative
+"Although they tried, the service was not wonderful.",negative
+"Although they tried, the service was not excellent.",negative
+"Although they tried, the service was not fantastic.",negative
+"Although they tried, the service was not lovely.",negative
+"Although they tried, the service was not amazing.",negative
+"Although they tried, the flight was not great.",negative
+"Although they tried, the flight was not wonderful.",negative
+"Although they tried, the flight was not excellent.",negative
+"Although they tried, the flight was not fantastic.",negative
+"Although they tried, the flight was not lovely.",negative
+"Although they tried, the flight was not amazing.",negative
+"Although they tried, the meal was not great.",negative
+"Although they tried, the meal was not wonderful.",negative
+"Although they tried, the meal was not excellent.",negative
+"Although they tried, the meal was not fantastic.",negative
+"Although they tried, the meal was not lovely.",negative
+"Although they tried, the meal was not amazing.",negative
+"Although they tried, the room was not great.",negative
+"Although they tried, the room was not wonderful.",negative
+"Although they tried, the room was not excellent.",negative
+"Although they tried, the room was not fantastic.",negative
+"Although they tried, the room was not lovely.",negative
+"Although they tried, the room was not amazing.",negative
+"Although they tried, the trip was not great.",negative
+"Although they tried, the trip was not wonderful.",negative
+"Although they tried, the trip was not excellent.",negative
+"Although they tried, the trip was not fantastic.",negative
+"Although they tried, the trip was not lovely.",negative
+"Although they tried, the trip was not amazing.",negative
+"Although they tried, the product was not great.",negative
+"Although they tried, the product was not wonderful.",negative
+"Although they tried, the product was not excellent.",negative
+"Although they tried, the product was not fantastic.",negative
+"Although they tried, the product was not lovely.",negative
+"Although they tried, the product was not amazing.",negative
+"Although they tried, the service was not terrible.",positive
+"Although they tried, the service was not awful.",positive
+"Although they tried, the service was not horrible.",positive
+"Although they tried, the service was not poor.",positive
+"Although they tried, the service was not disappointing.",positive
+"Although they tried, the service was not lousy.",positive
+"Although they tried, the flight was not terrible.",positive
+"Although they tried, the flight was not awful.",positive
+"Although they tried, the flight was not horrible.",positive
+"Although they tried, the flight was not poor.",positive
+"Although they tried, the flight was not disappointing.",positive
+"Although they tried, the flight was not lousy.",positive
+"Although they tried, the meal was not terrible.",positive
+"Although they tried, the meal was not awful.",positive
+"Although they tried, the meal was not horrible.",positive
+"Although they tried, the meal was not poor.",positive
+"Although they tried, the meal was not disappointing.",positive
+"Although they tried, the meal was not lousy.",positive
+"Although they tried, the room was not terrible.",positive
+"Although they tried, the room was not awful.",positive
+"Although they tried, the room was not horrible.",positive
+"Although they tried, the room was not poor.",positive
+"Although they tried, the room was not disappointing.",positive
+"Although they tried, the room was not lousy.",positive
+"Although they tried, the trip was not terrible.",positive
+"Although they tried, the trip was not awful.",positive
+"Although they tried, the trip was not horrible.",positive
+"Although they tried, the trip was not poor.",positive
+"Although they tried, the trip was not disappointing.",positive
+"Although they tried, the trip was not lousy.",positive
+"Although they tried, the product was not terrible.",positive
+"Although they tried, the product was not awful.",positive
+"Although they tried, the product was not horrible.",positive
+"Although they tried, the product was not poor.",positive
+"Although they tried, the product was not disappointing.",positive
+"Although they tried, the product was not lousy.",positive
+The service was anything but great.,negative
+The service was anything but wonderful.,negative
+The service was anything but excellent.,negative
+The service was anything but fantastic.,negative
+The service was anything but lovely.,negative
+The service was anything but amazing.,negative
+The flight was anything but great.,negative
+The flight was anything but wonderful.,negative
+The flight was anything but excellent.,negative
+The flight was anything but fantastic.,negative
+The flight was anything but lovely.,negative
+The flight was anything but amazing.,negative
+The meal was anything but great.,negative
+The meal was anything but wonderful.,negative
+The meal was anything but excellent.,negative
+The meal was anything but fantastic.,negative
+The meal was anything but lovely.,negative
+The meal was anything but amazing.,negative
+The room was anything but great.,negative
+The room was anything but wonderful.,negative
+The room was anything but excellent.,negative
+The room was anything but fantastic.,negative
+The room was anything but lovely.,negative
+The room was anything but amazing.,negative
+The trip was anything but great.,negative
+The trip was anything but wonderful.,negative
+The trip was anything but excellent.,negative
+The trip was anything but fantastic.,negative
+The trip was anything but lovely.,negative
+The trip was anything but amazing.,negative
+The product was anything but great.,negative
+The product was anything but wonderful.,negative
+The product was anything but excellent.,negative
+The product was anything but fantastic.,negative
+The product was anything but lovely.,negative
+The product was anything but amazing.,negative
+The service was anything but terrible.,positive
+The service was anything but awful.,positive
+The service was anything but horrible.,positive
+The service was anything but poor.,positive
+The service was anything but disappointing.,positive
+The service was anything but lousy.,positive
+The flight was anything but terrible.,positive
+The flight was anything but awful.,positive
+The flight was anything but horrible.,positive
+The flight was anything but poor.,positive
+The flight was anything but disappointing.,positive
+The flight was anything but lousy.,positive
+The meal was anything but terrible.,positive
+The meal was anything but awful.,positive
+The meal was anything but horrible.,positive
+The meal was anything but poor.,positive
+The meal was anything but disappointing.,positive
+The meal was anything but lousy.,positive
+The room was anything but terrible.,positive
+The room was anything but awful.,positive
+The room was anything but horrible.,positive
+The room was anything but poor.,positive
+The room was anything but disappointing.,positive
+The room was anything but lousy.,positive
+The trip was anything but terrible.,positive
+The trip was anything but awful.,positive
+The trip was anything but horrible.,positive
+The trip was anything but poor.,positive
+The trip was anything but disappointing.,positive
+The trip was anything but lousy.,positive
+The product was anything but terrible.,positive
+The product was anything but awful.,positive
+The product was anything but horrible.,positive
+The product was anything but poor.,positive
+The product was anything but disappointing.,positive
+The product was anything but lousy.,positive
